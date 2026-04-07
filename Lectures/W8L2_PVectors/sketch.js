@@ -1,30 +1,25 @@
-let x;
-let y;
-let xspeed;
-let yspeed;
+let pos;
+let speed;
 
 function setup() {
     createCanvas(400, 400);
-    x = width * 0.5;
-    y = width * 0.5;
-    xspeed = 3;
+    pos = createVector(width * 0.5, height * 0.5); 
+    speed = 3;
     stroke(6);
-    
 }
 
 function draw() {
     background(255);
-    rect(0,0,width,height)  // window border
-    circle(x,y,100);
-    //x = x + xspeed;
-    if (x > width + 50) {
-        x = -50;
-    } else {
-        x = x + xspeed;
-    }
-    //save();
-    //noLoop();
     
+    circle(pos.x, pos.y, 100);
+
+    //add speed to movr forward
+    pos.add(speed);
+
+    // wrap around screen
+    if (pos.x > width + 50) {
+        pos.x = -50;
+    }
 }
 
 function keyPressed() {
